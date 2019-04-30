@@ -122,6 +122,9 @@ def triangle_upside_down(r):
     #   in this or the other problems in this module, as doing so would
     #   defeat the goal of providing practice at loops within loops.
     # -------------------------------------------------------------------------
+    for k in range(r):
+        print
+        for j in range(r,0,-1):
 
 
 def run_test_vee():
