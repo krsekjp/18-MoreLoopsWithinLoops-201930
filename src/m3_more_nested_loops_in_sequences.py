@@ -10,9 +10,9 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 
 def main():
     """ Calls the other functions to test them. """
-    run_test_largest_number()
+    # run_test_largest_number()
     run_test_largest_negative_number()
-    run_test_first_is_elsewhere_too()
+    # run_test_first_is_elsewhere_too()
 
 
 def run_test_largest_number():
@@ -92,7 +92,7 @@ def largest_number(seq_seq):
 def run_test_largest_negative_number():
     """ Tests the    largest_negative_number    function. """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  largest_negative_number  function defined below.
     #
     #   Include enough tests to give you confidence that your solution
@@ -103,6 +103,26 @@ def run_test_largest_negative_number():
     print('Testing the   LARGEST_NEGATIVE_NUMBER   function:')
     print('-------------------------------------------------')
 
+    # Test 1:
+    expected = -1
+    answer = first_is_elsewhere_too([(3, -1, 4),
+                                     (-13, 10, -11, 7, 10),
+                                     [-11, 2, 13, -14]])
+    print('Expected and actual are:', expected, answer)
+
+    # Test 2:
+    expected = None
+    answer = first_is_elsewhere_too([(3, 1, 4),
+                                     (13, 10, 11, 7, 10),
+                                     [11, 2, 13, 14]])
+    print('Expected and actual are:', expected, answer)
+
+    # Test 3:
+    expected = -22
+    answer = first_is_elsewhere_too([(3, 1, 4),
+                                     (13, -22, 11, 7, 10),
+                                     [11, 2, 13, 14]])
+    print('Expected and actual are:', expected, answer)
 
 def largest_negative_number(seq_seq):
     """
@@ -134,6 +154,15 @@ def largest_negative_number(seq_seq):
     #   being constructed (so the SPACE allowed is limited to the
     #   give sequence of sequences plus any non-list variables you want).
     # -------------------------------------------------------------------------
+    number = -9999999999999999999
+    for k in range(len(seq_seq)):
+        for j in range(len(seq_seq[k])):
+            if seq_seq[k][j] < 0 and seq_seq[k][j] > number:
+                number = seq_seq[k][j]
+    print(number)
+    if number < -99999999999:
+        return None
+    return number
 
 
 def run_test_first_is_elsewhere_too():
