@@ -4,8 +4,8 @@ in the context of SEQUENCES OF SUB-SEQUENCES.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Josh Krsek.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -18,7 +18,7 @@ def main():
 def run_test_largest_number():
     """ Tests the    largest_number    function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  largest_number  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     # -------------------------------------------------------------------------
@@ -44,8 +44,12 @@ def run_test_largest_number():
     answer = largest_number(([], [], []))
     print('Expected and actual are:', expected, answer)
 
-    # TODO 2 (continued): Add your ADDITIONAL test(s) here:
+    # DONE 2 (continued): Add your ADDITIONAL test(s) here:
 
+    # Test 4:
+    expected = 111
+    answer = largest_number(([5,4,66], [-2, 0, -567], [0,1,11,111]))
+    print('Expected and actual are:', expected, answer)
 
 def largest_number(seq_seq):
     """
@@ -73,10 +77,17 @@ def largest_number(seq_seq):
     where each subsequence contains only numbers.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
-
+    big_numb = -99999999999999999999
+    for k in range(len(seq_seq)):
+        for j in range(len(seq_seq[k])):
+            if seq_seq[k][j] > big_numb:
+                big_numb = seq_seq[k][j]
+    if big_numb < -9999999999999999999:
+        return None
+    return big_numb
 
 def run_test_largest_negative_number():
     """ Tests the    largest_negative_number    function. """
