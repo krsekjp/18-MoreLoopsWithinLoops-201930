@@ -10,9 +10,9 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 
 def main():
     """ Calls the other functions to test them. """
-    run_test_triangle_right_justified()
+    # run_test_triangle_right_justified()
     # run_test_triangle_upside_down()
-    # run_test_vee()
+    run_test_vee()
     # run_test_numbers_constant_forward()
     # run_test_numbers_constant_backwards()
     # run_test_numbers_increasing_forward()
@@ -114,7 +114,7 @@ def triangle_upside_down(r):
     For purposes of "lining up", assume r is a single digit.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -123,8 +123,11 @@ def triangle_upside_down(r):
     #   defeat the goal of providing practice at loops within loops.
     # -------------------------------------------------------------------------
     for k in range(r):
-        print
-        for j in range(r,0,-1):
+        print(' ' * k, end='')
+        for j in range(r-k):
+            print(j+1,end='')
+        print()
+
 
 
 def run_test_vee():
@@ -168,7 +171,7 @@ def vee(r):
     For purposes of "lining up", assume r is a single digit.
     """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -176,7 +179,14 @@ def vee(r):
     #   in this or the other problems in this module, as doing so would
     #   defeat the goal of providing practice at loops within loops.
     # -------------------------------------------------------------------------
-
+    for k in range(r,0,-1):
+        print(' '*(r-k),end='')
+        for j in range(k):
+            print(j+1,end='')
+        print('-',end='')
+        for i in range(k,0,-1):
+            print(i,end='')
+        print()
 
 def run_test_numbers_constant_forward():
     """ Tests the    numbers_constant_forward    function. """
