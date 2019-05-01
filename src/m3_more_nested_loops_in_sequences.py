@@ -11,8 +11,8 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 def main():
     """ Calls the other functions to test them. """
     # run_test_largest_number()
-    run_test_largest_negative_number()
-    # run_test_first_is_elsewhere_too()
+    # run_test_largest_negative_number()
+    run_test_first_is_elsewhere_too()
 
 
 def run_test_largest_number():
@@ -157,12 +157,12 @@ def largest_negative_number(seq_seq):
     number = -9999999999999999999
     for k in range(len(seq_seq)):
         for j in range(len(seq_seq[k])):
-            if seq_seq[k][j] < 0 and seq_seq[k][j] > number:
+            if seq_seq[k][j] < 0:
                 number = seq_seq[k][j]
     print(number)
-    if number < -99999999999:
-        return None
-    return number
+    if number > -99999999999:
+        return number
+    return None
 
 
 def run_test_first_is_elsewhere_too():
@@ -411,7 +411,12 @@ def first_is_elsewhere_too(seq_seq):
     #   in this problem, as doing so would defeat the goal of providing
     #   practice at loops within loops (within loops within ...)
     # -------------------------------------------------------------------------
-
+    for k in range(1,len(seq_seq)):
+        for j in range(len(seq_seq[1])):
+            for i in range(len(seq_seq[k])):
+                if seq_seq[1][j] == seq_seq[k][i]:
+                    return True
+    return False
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
