@@ -11,8 +11,8 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 def main():
     """ Calls the other functions to test them. """
     # run_test_largest_number()
-    # run_test_largest_negative_number()
-    run_test_first_is_elsewhere_too()
+    run_test_largest_negative_number()
+    # run_test_first_is_elsewhere_too()
 
 
 def run_test_largest_number():
@@ -80,13 +80,13 @@ def largest_number(seq_seq):
     # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
-    big_numb = -99999999999999999999
+    big_numb = None
+
     for k in range(len(seq_seq)):
         for j in range(len(seq_seq[k])):
-            if seq_seq[k][j] > big_numb:
+            if big_numb == None or seq_seq[k][j] > big_numb:
                 big_numb = seq_seq[k][j]
-    if big_numb < -9999999999999999999:
-        return None
+
     return big_numb
 
 def run_test_largest_negative_number():
@@ -105,21 +105,21 @@ def run_test_largest_negative_number():
 
     # Test 1:
     expected = -1
-    answer = first_is_elsewhere_too([(3, -1, 4),
+    answer = largest_negative_number([(3, -1, 4),
                                      (-13, 10, -11, 7, 10),
                                      [-11, 2, 13, -14]])
     print('Expected and actual are:', expected, answer)
 
     # Test 2:
     expected = None
-    answer = first_is_elsewhere_too([(3, 1, 4),
+    answer = largest_negative_number([(3, 1, 4),
                                      (13, 10, 11, 7, 10),
                                      [11, 2, 13, 14]])
     print('Expected and actual are:', expected, answer)
 
     # Test 3:
     expected = -22
-    answer = first_is_elsewhere_too([(3, 1, 4),
+    answer = largest_negative_number([(3, 1, 4),
                                      (13, -22, 11, 7, 10),
                                      [11, 2, 13, 14]])
     print('Expected and actual are:', expected, answer)
@@ -147,23 +147,21 @@ def largest_negative_number(seq_seq):
     where each subsequence contains only numbers.
     """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # CHALLENGE: Try to solve this problem with no additional sequences
     #   being constructed (so the SPACE allowed is limited to the
     #   give sequence of sequences plus any non-list variables you want).
     # -------------------------------------------------------------------------
-    number = -9999999999999999999
+    big_numb = None
+
     for k in range(len(seq_seq)):
         for j in range(len(seq_seq[k])):
             if seq_seq[k][j] < 0:
-                number = seq_seq[k][j]
-    print(number)
-    if number > -99999999999:
-        return number
-    return None
-
+                if big_numb == None or seq_seq[k][j] > big_numb:
+                    big_numb = seq_seq[k][j]
+    return big_numb
 
 def run_test_first_is_elsewhere_too():
     """ Tests the    first_is_elsewhere_too    function. """
@@ -396,7 +394,7 @@ def first_is_elsewhere_too(seq_seq):
     and the given argument is a sequence of sequences.
     """
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -412,9 +410,9 @@ def first_is_elsewhere_too(seq_seq):
     #   practice at loops within loops (within loops within ...)
     # -------------------------------------------------------------------------
     for k in range(1,len(seq_seq)):
-        for j in range(len(seq_seq[1])):
+        for j in range(len(seq_seq[0])):
             for i in range(len(seq_seq[k])):
-                if seq_seq[1][j] == seq_seq[k][i]:
+                if seq_seq[0][j] == seq_seq[k][i]:
                     return True
     return False
 
